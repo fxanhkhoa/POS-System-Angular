@@ -6,6 +6,7 @@ export interface FirebaseUser {
     photoURL?: string;
     displayName?: string;
     myCustomData?: string;
+    idToken?: string;
 }
 
 export interface IUser extends FirebaseUser{

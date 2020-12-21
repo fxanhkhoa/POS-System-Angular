@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
       return this.auth.firebaseUser$.pipe(
         take(1),
         map(user => {
-          console.log(user)
           return !!user
         }), // <-- map to boolean
         tap(loggedIn => {

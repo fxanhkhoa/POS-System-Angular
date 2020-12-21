@@ -26,7 +26,6 @@ export class AuthService {
     this.firebaseUser$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         // Logged in
-        console.log(user);
         if (user) {
           return this.afs.doc<FirebaseUser>(`users/${user.uid}`).valueChanges();
         } else {
@@ -39,46 +38,31 @@ export class AuthService {
 
   async googleSignin() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    const idToken = this.cookieService.get('idToken');
-    console.log(idToken)
     let credential;
-    if (idToken) {
-        credential = await this.afAuth.signInWithCustomToken(idToken);
-        console.log(credential)
-    }
-    else {
-        credential = await this.afAuth.signInWithPopup(provider);
-    }
-    console.log(credential);
+    credential = await this.afAuth.signInWithPopup(provider);
     
-    return this.updateUserData(credential);
+    return this.updateUserData(credential.user);
   }
 
-  private updateUserData(credential: any) {
-    console.log(credential.user);
+  private updateUserData(user: any) {
+    console.log(user);
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<FirebaseUser> = this.afs.doc(
-      `users/${credential.user.uid}`
+      `users/${user.uid}`
     );
 
-    // Set cookies for id_token
-    this.afAuth.idToken.pipe(take(1)).subscribe(
-        res => {
-            console.log(res);
-            this.cookieService.set( 'idToken', res as string );
-        }
-    )
     // Set cookies for refreshToken
-    this.cookieService.set( 'refreshToken', credential.user.refreshToken );
-
-    const data = {
-      uid: credential.user.uid,
-      email: credential.user.email,
-      displayName: credential.user.displayName,
-      photoURL: credential.user.photoURL,
-    };
-
-    return userRef.set(data, { merge: true });
+    user?.getIdToken(true).then((idToken: string) => {
+        const data = {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            idToken: idToken
+        }
+      
+        return userRef.set(data, { merge: true });
+    })
   }
 
   async signOut() {
