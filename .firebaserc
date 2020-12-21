@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pos-system-9ba0e": {
+      "hosting": {
+        "POS-System-Angular": [
+          "pos-system-9ba0e"
+        ]
+      }
+    }
+  }
+}

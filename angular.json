@@ -123,6 +123,10 @@
               "devServerTarget": "POS-System-Angular:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

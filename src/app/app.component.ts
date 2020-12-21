@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { EnvironmentService } from './services/environment.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'POS-System-Angular';
+  environmentMode: Observable<string>;
+  constructor(private environmentService: EnvironmentService) {
+    this.environmentMode = this.environmentService.environmentMode$;
+  }
 }
