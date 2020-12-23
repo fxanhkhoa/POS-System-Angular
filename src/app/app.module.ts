@@ -15,6 +15,9 @@ import { AuthService } from './services/authentication/auth.service';
 import { AuthGuard } from './services/authentication/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { CookieService } from 'ngx-cookie-service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [AuthService, AuthGuard, CookieService],
   bootstrap: [AppComponent]

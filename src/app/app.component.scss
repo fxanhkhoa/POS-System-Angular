@@ -6,9 +6,25 @@
         width: 100%;
         height: 100%;
         color: white;
+
+        .bg-dark {
+            opacity: 0.3;
+        }
+
+        .side-nav-btn {
+            font-size: 25px;
+            position: absolute;
+            top: 50%;
+            transform: translateX(-17px);
+        }
     }
 
     &.light-theme {
 
     }
+}
+
+// Ultilities SCSS
+.remove-focus:focus{
+    outline: none !important;
 }

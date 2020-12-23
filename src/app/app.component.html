@@ -1,6 +1,23 @@
-<div class="main-background"
+<mat-drawer-container class="main-background" autosize 
     [ngClass]="{'dark-theme': (environmentMode | async) === 'dark', 'light-theme': (environmentMode | async) === 'light'}">
-    <div class="container-fluid">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Auto-resizing sidenav</p>
+        <p>Lorem, ipsum dolor sit amet consectetur.</p>
+        <button mat-raised-button>
+            Toggle extra text
+        </button>
+    </mat-drawer>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <button mat-icon-button (click)="drawer.toggle(); toggleNavIcon()" class="side-nav-btn remove-focus" color="primary">
+            <mat-icon fontSet="fa" fontIcon="fa-chevron-circle-right" [inline]="true" [@rotatedState]='state'></mat-icon>
+        </button>
         <router-outlet></router-outlet>
     </div>
-</div>
+</mat-drawer-container>
