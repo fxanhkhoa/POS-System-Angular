@@ -7,7 +7,7 @@ import {
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { FirebaseUser, IUser } from 'src/app/interfaces/user.model';
-import { switchMap, take } from 'rxjs/operators';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 import firebase from 'firebase/app';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -68,5 +68,20 @@ export class AuthService {
   async signOut() {
     await this.afAuth.signOut();
     this.router.navigate(['/']);
+  }
+
+  isLoggedIn() {
+    return this.firebaseUser$.pipe(
+      take(1),
+      map((user) => {
+        return !!user;
+      }), // <-- map to boolean
+      tap((loggedIn) => {
+        if (!loggedIn) {
+          console.log('access denied');
+        }
+        return loggedIn;
+      })
+    );
   }
 }

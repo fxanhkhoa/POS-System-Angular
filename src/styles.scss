@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $POS-System-Angular-primary: mat-palette($mat-blue-grey);
-$POS-System-Angular-accent: mat-palette($mat-pink, A200, A100, A400);
+$POS-System-Angular-accent: mat-palette($mat-green, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $POS-System-Angular-warn: mat-palette($mat-red);

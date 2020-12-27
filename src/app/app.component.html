@@ -1,7 +1,6 @@
-<mat-drawer-container class="main-background" autosize 
-    [ngClass]="{'dark-theme': (environmentMode | async) === 'dark', 'light-theme': (environmentMode | async) === 'light'}">
+<mat-drawer-container autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
-        <p>Auto-resizing sidenav</p>
+        <p>{{environmentMode}}</p>
         <p>Lorem, ipsum dolor sit amet consectetur.</p>
         <button mat-raised-button>
             Toggle extra text
@@ -9,14 +8,52 @@
     </mat-drawer>
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">POS SYSTEM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link menu-navbar" href="#">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link menu-navbar" href="#">Portfolio</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link menu-navbar" href="#">About</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <select class="form-control search-select" id="sel1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                    <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search">
+                    <button mat-icon-button color="primary">
+                        <mat-icon fontSet="fa" fontIcon="fa-search" color="accent" [inline]="true">
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
+                        <mat-icon fontSet="fa" fontIcon="fa-user-circle" color="primary" [inline]="true">
+                        </mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="OpenLoginDialog()">
+                          <mat-icon fontSet="fa" fontIcon="fa-sign-in-alt" color="primary"></mat-icon>
+                          <span>Sign In</span>
+                        </button>
+                      </mat-menu>
+                </div>
+            </div>
         </nav>
-        <button mat-icon-button (click)="drawer.toggle(); toggleNavIcon()" class="side-nav-btn remove-focus" color="primary">
-            <mat-icon fontSet="fa" fontIcon="fa-chevron-circle-right" [inline]="true" [@rotatedState]='state'></mat-icon>
+        <button mat-icon-button (click)="drawer.toggle(); ToggleNavIcon()" class="side-nav-btn remove-focus"
+            color="primary">
+            <mat-icon fontSet="fa" fontIcon="fa-chevron-circle-right" [inline]="true" [@rotatedState]='state'>
+            </mat-icon>
         </button>
         <router-outlet></router-outlet>
     </div>

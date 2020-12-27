@@ -18,12 +18,16 @@ import { CookieService } from 'ngx-cookie-service';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoginDialogComponent } from './authentication/login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import {MatButtonModule} from '@angular/material/button';
     AngularFireAuthModule,
     MatSidenavModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [AuthService, AuthGuard, CookieService],
   bootstrap: [AppComponent]
