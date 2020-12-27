@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class EnvironmentService {
-  private environmentMode = new BehaviorSubject<string>('dark');
+  private environmentMode = new BehaviorSubject<string>('dark-theme');
   public environmentMode$ = this.environmentMode.asObservable();
   constructor() { 
     

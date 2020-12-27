@@ -1,0 +1,19 @@
+h1 {
+    color: #FFFFFF;
+}
+
+.login-container {
+    .google-login-btn {
+        width: 20vw;
+        height: 5vh;
+        background-color: #2a2a72;
+        background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+        color: #FFF;
+        font-size: 20px;
+        
+        mat-icon {
+            font-size: 30px;
+            float: left;
+        }
+    }
+}
