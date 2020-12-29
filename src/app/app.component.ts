@@ -30,6 +30,7 @@ export class AppComponent {
   title = 'POS-System-Angular';
   state = 'default';
   isLogin = false;
+  profileImage = '';
   environmentMode: string = '';
   constructor(
     private environmentService: EnvironmentService,
@@ -40,7 +41,10 @@ export class AppComponent {
       this.environmentMode = res;
       this.classes = `${this.environmentMode} main-background`;
     });
-    authService.isLoggedIn().subscribe((res) => (this.isLogin = res));
+    authService.LoggedUser().subscribe((res) => {
+      this.isLogin = !!res;
+      this.profileImage = res?.photoURL ? res?.photoURL : '';
+    });
   }
 
   ToggleNavIcon() {
@@ -55,6 +59,13 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      if (result) {
+        
+      }
     });
+  }
+
+  LogOut() {
+    this.authService.signOut();
   }
 }

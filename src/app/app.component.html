@@ -32,26 +32,37 @@
                         <option>3</option>
                         <option>4</option>
                     </select>
-                    <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search"
+                        aria-label="Search">
                     <button mat-icon-button color="primary">
                         <mat-icon fontSet="fa" fontIcon="fa-search" color="accent" [inline]="true">
                         </mat-icon>
                     </button>
                     <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
-                        <mat-icon fontSet="fa" fontIcon="fa-user-circle" color="primary" [inline]="true">
+                        <mat-icon *ngIf="!isLogin" fontSet="fa" fontIcon="fa-user-circle" color="primary"
+                            [inline]="true">
                         </mat-icon>
+                        <img *ngIf="isLogin" class="account-image" [src]="profileImage" />
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)="OpenLoginDialog()">
-                          <mat-icon fontSet="fa" fontIcon="fa-sign-in-alt" color="primary"></mat-icon>
-                          <span>Sign In</span>
+                        <button mat-menu-item *ngIf="!isLogin" (click)="OpenLoginDialog()">
+                            <mat-icon fontSet="fa" fontIcon="fa-sign-in-alt" color="primary"></mat-icon>
+                            <span>Sign In</span>
                         </button>
-                      </mat-menu>
+                        <button *ngIf="isLogin" mat-menu-item [routerLink]="'user'">
+                            <mat-icon fontSet="fa" fontIcon="fa-users-cog" color="primary"></mat-icon>
+                            <span>Setting</span>
+                        </button>
+                        <button *ngIf="isLogin" mat-menu-item (click)="LogOut()">
+                            <mat-icon fontSet="fa" fontIcon="fa-sign-out-alt" color="primary"></mat-icon>
+                            <span>Log out</span>
+                        </button>
+                    </mat-menu>
                 </div>
             </div>
         </nav>
-        <button mat-icon-button (click)="drawer.toggle(); ToggleNavIcon()" class="side-nav-btn remove-focus"
-            color="primary">
+        <button mat-icon-button *ngIf="isLogin" (click)="drawer.toggle(); ToggleNavIcon()"
+            class="side-nav-btn remove-focus" color="primary">
             <mat-icon fontSet="fa" fontIcon="fa-chevron-circle-right" [inline]="true" [@rotatedState]='state'>
             </mat-icon>
         </button>

@@ -70,17 +70,10 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  isLoggedIn() {
+  LoggedUser() {
     return this.firebaseUser$.pipe(
-      take(1),
       map((user) => {
-        return !!user;
-      }), // <-- map to boolean
-      tap((loggedIn) => {
-        if (!loggedIn) {
-          console.log('access denied');
-        }
-        return loggedIn;
+        return user;
       })
     );
   }

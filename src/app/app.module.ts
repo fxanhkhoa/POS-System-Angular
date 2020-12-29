@@ -10,7 +10,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { HomeComponent } from './views/home/home.component';
-import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { AuthService } from './services/authentication/auth.service';
 import { AuthGuard } from './services/authentication/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
@@ -26,8 +25,7 @@ import { LoginDialogComponent } from './authentication/login-dialog/login-dialog
   declarations: [
     AppComponent,
     HomeComponent,
-    UserProfileComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
   ],
   imports: [
     BrowserModule,
