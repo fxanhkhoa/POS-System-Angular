@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, HostBinding, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { LoginDialogComponent } from './authentication/login-dialog/login-dialog.component';
 import { AuthService } from './services/authentication/auth.service';
@@ -35,7 +36,8 @@ export class AppComponent {
   constructor(
     private environmentService: EnvironmentService,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private translate: TranslateService
   ) {
     this.environmentService.environmentMode$.subscribe((res) => {
       this.environmentMode = res;

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { FirebaseUser } from 'src/app/interfaces/user.model';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 @Component({
   selector: 'app-user-setting',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSettingComponent implements OnInit {
 
-  constructor() { }
+  user$: Observable<FirebaseUser | null | undefined>;
+  vertical = true;
 
-  ngOnInit(): void {
+  constructor(private auth: AuthService) { 
+    this.user$ = new Observable();
   }
 
+  ngOnInit(): void {
+    this.user$ = this.auth.firebaseUser$;
+  }
+
+  changeVerticalButtonToggle() {
+    this.vertical = !this.vertical;
+  }
 }

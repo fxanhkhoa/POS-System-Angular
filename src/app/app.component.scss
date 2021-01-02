@@ -68,6 +68,51 @@
       height: 30px;
       border-radius: 50%;
     }
+
+    .mat-expansion-panel {
+      background-color: #6e6e6e;
+      .mat-expansion-panel-header {
+        .mat-content {
+          .mat-expansion-panel-header-title {
+            color: #ffffff;
+          }
+          .mat-expansion-panel-header-description {
+            color: #119da4;
+          }
+        }
+      }
+    }
+
+    .mat-card {
+      background-color: rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 2px 1px -1px rgba(255, 255, 255, 0.2),
+        0px 1px 1px 0px rgba(255, 255, 255, 0.14), 0px 1px 3px 0px rgba(255, 255, 255, 0.12);
+
+      .mat-card-title {
+        color: #ffffff;
+      }
+
+      .mat-card-subtitle {
+        color: #ffffff;
+      }
+
+      .mat-divider {
+        border-top-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .mat-button-toggle {
+      background: transparent;
+      .mat-button-toggle-button {
+        color: #FFFFFF;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+    .mat-button-toggle-checked {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    
   }
 }
 

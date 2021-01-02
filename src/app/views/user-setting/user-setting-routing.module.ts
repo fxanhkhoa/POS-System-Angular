@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: UserSettingComponent,
     children: [
-      { path: '', redirectTo: 'user' },
+      { path: '', redirectTo: 'profile-management' },
       { path: 'profile-management', component: ProfileComponent },
     ],
   },
