@@ -45,7 +45,7 @@
                         <img *ngIf="isLogin" class="account-image" [src]="profileImage" />
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item *ngIf="!isLogin" (click)="OpenLoginDialog()">
+                        <button mat-menu-item *ngIf="!isLogin" [routerLink]="'login'">
                             <mat-icon fontSet="fa" fontIcon="fa-sign-in-alt" color="primary"></mat-icon>
                             <span>Sign In</span>
                         </button>
@@ -57,6 +57,21 @@
                             <mat-icon fontSet="fa" fontIcon="fa-sign-out-alt" color="primary"></mat-icon>
                             <span>Log out</span>
                         </button>
+                        <div class="p-2">
+                            <mat-label class="menu-language mb-1">Choose language</mat-label>
+                            <mat-select [(value)]="selectedLanguage" (selectionChange)="changeLanguage($event)">
+                                <mat-option *ngFor="let lang of languages" [value]="lang.value">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <img class="flag-img" [src]="'../assets/icon/' + lang.value + '.png'" />
+                                        </div>
+                                        <div>
+                                            {{lang.name}}
+                                        </div>
+                                    </div>
+                                </mat-option>
+                            </mat-select>
+                        </div>
                     </mat-menu>
                 </div>
             </div>
@@ -69,3 +84,4 @@
         <router-outlet></router-outlet>
     </div>
 </mat-drawer-container>
+<ngx-spinner type="square-jelly-box"></ngx-spinner>

@@ -1,3 +1,27 @@
-<div class="container-fluid">
-    
-</div>
+<!-- <div class="container-fluid">
+    <form [formGroup]="profileForm">
+        <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input type="text" matInput formControlName="phone">
+        </mat-form-field>
+    </form>
+</div> -->
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{'user-setting.profile.user-profile' | translate}}</mat-card-title>
+        <mat-card-subtitle>{{'user-setting.profile.edit-your-profile' | translate}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-divider class="mb-2"></mat-divider>
+        <form [formGroup]="profileForm">
+            <mat-form-field>
+                <mat-label >{{'user-setting.profile.phone' | translate}}</mat-label>
+                <input type="tel" matInput formControlName="phone">
+                <mat-error *ngIf="profileForm.controls['phone'].hasError('pattern') || profileForm.controls['phone'].hasError('minlength')">
+                    {{'user-setting.profile.enter-valid-phone' | translate}}
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <button (click)="check()">asdasd</button>
+</mat-card>

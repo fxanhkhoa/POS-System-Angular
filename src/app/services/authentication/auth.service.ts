@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthService {
   firebaseUser$: Observable<FirebaseUser | null | undefined>;
+  public token = '';
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -45,7 +46,7 @@ export class AuthService {
   }
 
   private updateUserData(user: any) {
-    console.log(user);
+    // console.log(user);
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<FirebaseUser> = this.afs.doc(
       `users/${user.uid}`
@@ -60,7 +61,7 @@ export class AuthService {
             photoURL: user.photoURL,
             idToken: idToken
         }
-      
+        this.token = idToken;
         return userRef.set(data, { merge: true });
     })
   }
