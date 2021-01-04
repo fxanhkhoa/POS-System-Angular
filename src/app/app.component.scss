@@ -31,7 +31,7 @@
             .menu-navbar:after {
                 display: block;
                 content: "";
-                border-bottom: solid 3px #119da4;
+                border-bottom: solid 3px #15e2ed;
                 transform: scaleX(0);
                 transition: transform 250ms ease-in-out;
                 transform-origin: 100% 50%;
@@ -53,7 +53,7 @@
             }
 
             .mat-icon {
-                color: #119da4;
+                color: #15e2ed;
             }
         }
 
@@ -77,7 +77,7 @@
                         color: #ffffff;
                     }
                     .mat-expansion-panel-header-description {
-                        color: #119da4;
+                        color: #15e2ed;
                     }
                 }
             }
@@ -115,7 +115,7 @@
 
         .mat-form-field {
             .mat-form-field-label {
-                color: #119da4;
+                color: #15e2ed;
             }
             .mat-form-field-infix {
                 color: #ffffff;

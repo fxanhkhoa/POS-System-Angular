@@ -31,7 +31,6 @@ import {
 } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { CustomInterceptor } from './services/authentication/custom.interceptor';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -44,7 +43,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         AppComponent,
         HomeComponent,
         LoginDialogComponent,
-        SignUpComponent,
     ],
     imports: [
         BrowserModule,

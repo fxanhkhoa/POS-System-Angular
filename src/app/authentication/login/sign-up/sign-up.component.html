@@ -1,0 +1,64 @@
+<div class="container-fluid p-5">
+    <div class="row d-flex justify-content-center">
+        <h1>{{'authentication.login.sign-up.title' | translate}}</h1>
+    </div>
+    <form [formGroup]="profileForm">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12 d-flex justify-content-center">
+                <mat-form-field class="w-50">
+                    <mat-label>{{'authentication.login.sign-up.phone' | translate}}</mat-label>
+                    <input matInput formControlName="phone">
+                    <mat-icon matSuffix fontSet="fa" fontIcon="fa-phone" [color]="'accent'"></mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+        <div formGroupName="address">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <mat-form-field class="w-50">
+                        <mat-label>{{'authentication.login.sign-up.street' | translate}}</mat-label>
+                        <input matInput>
+                        <mat-icon matSuffix fontSet="fa" fontIcon="fa-road" [color]="'accent'"></mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div>
+                        <mat-form-field >
+                            <mat-label>{{'authentication.login.sign-up.ward' | translate}}</mat-label>
+                            <input matInput>
+                            <mat-icon matSuffix fontSet="fa" fontIcon="fa-location-arrow" [color]="'accent'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>{{'authentication.login.sign-up.district' | translate}}</mat-label>
+                            <input matInput>
+                            <mat-icon matSuffix fontSet="fa" fontIcon="fa-location-arrow" [color]="'accent'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 d-flex justify-content-end">
+                    <mat-form-field class="w-50">
+                        <mat-label>{{'authentication.login.sign-up.city' | translate}}</mat-label>
+                        <input matInput>
+                        <mat-icon matSuffix fontSet="fa" fontIcon="fa-city" [color]="'accent'"></mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 d-flex justify-content-start">
+                    <mat-form-field class="w-50">
+                        <mat-label>{{'authentication.login.sign-up.nation' | translate}}</mat-label>
+                        <input matInput>
+                        <mat-icon matSuffix fontSet="fa" fontIcon="fa-globe-asia" [color]="'accent'"></mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <button mat-raised-button color="primary" (click)="signUp()">{{'authentication.login.sign-up.sign-up' | translate}}</button>
+        </div>
+    </form>
+</div>
