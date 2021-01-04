@@ -48,10 +48,7 @@ export class AppComponent {
     ) {
         translate.addLangs(['en', 'vi']);
         this.curentLanguage = translate.getDefaultLang();
-        this.environmentService.getLocation().subscribe((res) => {
-            // translate.setDefaultLang(res.languages[0].name);
-            translate.setDefaultLang('en');
-        });
+        translate.setDefaultLang(navigator.language.split('-')[0]);
         this.environmentService.environmentMode$.subscribe((res) => {
             this.environmentMode = res;
             this.classes = `${this.environmentMode} main-background`;

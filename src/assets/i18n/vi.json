@@ -1,4 +1,13 @@
 {
+    "authentication.login.sign-up.title": "ĐĂNG KÝ THÔNG TIN",
+    "authentication.login.sign-up.phone": "Phone",
+    "authentication.login.sign-up.street": "Street",
+    "authentication.login.sign-up.ward": "Ward",
+    "authentication.login.sign-up.district": "District",
+    "authentication.login.sign-up.city": "City",
+    "authentication.login.sign-up.nation": "Nation",
+    "authentication.login.sign-up.sign-up": "Sign Up",
+
     "user-setting.title": "THIẾT LẬP NGƯỜI DÙNG",
     "user-setting.profile": "Hồ Sơ Của Tôi",
     "user-setting.shop": "My Shops",
