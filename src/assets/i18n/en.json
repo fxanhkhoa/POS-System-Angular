@@ -1,5 +1,7 @@
 {
     "authentication.login.sign-up.title": "PROFILE SIGN UP",
+    "authentication.login.sign-up.name": "Name",
+    "authentication.login.sign-up.email": "Email",
     "authentication.login.sign-up.phone": "Phone",
     "authentication.login.sign-up.street": "Street",
     "authentication.login.sign-up.ward": "Ward",

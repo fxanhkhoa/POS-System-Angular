@@ -13,4 +13,8 @@ export class UserService {
     checkExisted() {
       return this.http.get<{result: Boolean}>(`${this.endPoint}${this.version}authorize/check-existed`);
     }
+
+    registerUser() {
+      
+    }
 }

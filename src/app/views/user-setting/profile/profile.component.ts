@@ -9,6 +9,7 @@ import { BaseComponent } from 'src/app/shared/base.component';
 })
 export class ProfileComponent implements OnInit {
     profileForm: FormGroup;
+    
 
     constructor() {
         this.profileForm = new FormGroup({

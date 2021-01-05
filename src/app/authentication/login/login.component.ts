@@ -26,11 +26,12 @@ export class LoginComponent extends BaseComponent implements OnInit {
             .subscribe((res) => {
                 if (res !== null) {
                     this.userService.checkExisted().subscribe((res) => {
-                      console.log(res);
-                        if (res.result) {
+                        console.log(res.result);
+                        if (res.result === true) {
                             this.router.navigate(['']);
                         } else {
-                            this.router.navigate(['sign-up']);
+                            
+                            this.router.navigate(['login', 'sign-up']);
                         }
                     });
                 }
