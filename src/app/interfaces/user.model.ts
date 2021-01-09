@@ -10,15 +10,15 @@ export interface FirebaseUser {
 }
 
 export interface IAddress {
-    street: string;
-    ward: string;
-    district: string;
-    city: string;
-    nation: string;
+    street?: string;
+    ward?: string;
+    district?: string;
+    city?: string;
+    nation?: string;
 }
 
 export interface IUser extends FirebaseUser{
-    shops: IShop[],
-    phone: string,
-    address: IAddress;
+    shops?: IShop[],
+    phone?: string,
+    address?: IAddress;
 }

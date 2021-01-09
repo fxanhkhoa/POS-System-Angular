@@ -14,7 +14,7 @@ import { AuthService } from './services/authentication/auth.service';
 import { AuthGuard } from './services/authentication/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,6 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { LoginDialogComponent } from './authentication/login-dialog/login-dialog.component';
 import {
@@ -33,6 +35,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomInterceptor } from './services/authentication/custom.interceptor';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SuccessSnackbarComponent } from './shared/views/success-snackbar/success-snackbar.component';
+import { ErrorSnackbarComponent } from './shared/views/error-snackbar/error-snackbar.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -43,6 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         AppComponent,
         HomeComponent,
         LoginDialogComponent,
+        SuccessSnackbarComponent,
+        ErrorSnackbarComponent,
     ],
     imports: [
         BrowserModule,
@@ -60,6 +66,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatMenuModule,
         MatDialogModule,
         MatSelectModule,
+        MatExpansionModule,
+        MatButtonToggleModule,
         TranslateModule.forRoot({
             defaultLanguage: 'en',
             loader: {
@@ -68,7 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient],
             },
         }),
-        NgxSpinnerModule
+        NgxSpinnerModule,
     ],
     exports: [TranslateModule],
     providers: [

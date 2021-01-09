@@ -21,7 +21,6 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
-    private cookieService: CookieService
   ) {
     // Get the auth state, then fetch the Firestore user document or return null
     this.firebaseUser$ = this.afAuth.authState.pipe(
@@ -63,7 +62,7 @@ export class AuthService {
         }
         this.token = idToken;
         return userRef.set(data, { merge: true });
-    })
+    });
   }
 
   async signOut() {

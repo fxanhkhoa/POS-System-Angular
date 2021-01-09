@@ -3,7 +3,7 @@
         <h1>{{'authentication.login.sign-up.title' | translate}}</h1>
     </div>
     <form [formGroup]="profileForm">
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center my-2">
             <img class="profile-image" [src]="(user$ | async)?.photoURL" />
         </div>
         <div class="row d-flex justify-content-center">
@@ -12,16 +12,16 @@
                     <div class="col-md-6">
                         <mat-form-field class="w-100">
                             <mat-label>{{'authentication.login.sign-up.name' | translate}}</mat-label>
-                            <input matInput formControlName="name" readonly [value]="(user$ | async)?.displayName">
-                            <mat-icon matSuffix fontSet="fa" fontIcon="fa-location-arrow" [color]="'accent'">
+                            <input matInput formControlName="name" readonly>
+                            <mat-icon matSuffix fontSet="fa" fontIcon="fa-signature" [color]="'accent'">
                             </mat-icon>
                         </mat-form-field>
                     </div>
                     <div class="col-md-6">
                         <mat-form-field class="w-100">
                             <mat-label>{{'authentication.login.sign-up.email' | translate}}</mat-label>
-                            <input matInput formControlName="email" readonly [value]="(user$ | async)?.email">
-                            <mat-icon matSuffix fontSet="fa" fontIcon="fa-location-arrow" [color]="'accent'">
+                            <input matInput formControlName="email" readonly>
+                            <mat-icon matSuffix fontSet="fa" fontIcon="fa-at" [color]="'accent'">
                             </mat-icon>
                         </mat-form-field>
                     </div>

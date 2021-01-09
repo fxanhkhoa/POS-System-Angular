@@ -40,6 +40,7 @@ export class AppComponent {
         { name: 'Vietnamese', value: 'vi' },
     ];
     curentLanguage = 'en';
+    vertical = true;
     constructor(
         private environmentService: EnvironmentService,
         private authService: AuthService,

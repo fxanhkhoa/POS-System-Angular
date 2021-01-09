@@ -1,4 +1,8 @@
 {
+    "app.shops": "Shops",
+    "app.import": "Import",
+    "app.sell": "Sell",
+
     "authentication.login.sign-up.title": "PROFILE SIGN UP",
     "authentication.login.sign-up.name": "Name",
     "authentication.login.sign-up.email": "Email",

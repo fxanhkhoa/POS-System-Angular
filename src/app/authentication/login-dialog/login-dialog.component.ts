@@ -22,20 +22,5 @@ export class LoginDialogComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.auth
-            .LoggedUser()
-            .pipe(takeUntil(this.ngDestroyed$))
-            .subscribe((res) => {
-                if (res !== null) {
-                    this.userService.checkExisted().subscribe((resExisted) => {
-                        if (resExisted.result) {
-                            this.dialogRef.close(true);
-                        } else {
-                            this.dialogRef.close(true);
-                            this.router.navigate(['login','sign-up']);
-                        }
-                    });
-                }
-            });
     }
 }

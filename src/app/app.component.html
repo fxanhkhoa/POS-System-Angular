@@ -1,10 +1,40 @@
 <mat-drawer-container autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        <p>{{environmentMode}}</p>
-        <p>Lorem, ipsum dolor sit amet consectetur.</p>
-        <button mat-raised-button>
-            Toggle extra text
-        </button>
+    <mat-drawer #drawer mode="side">
+        <div class="side-menu">
+            <div class="row d-flex justify-content-center my-3">
+                <img class="account-image side-menu" [src]="profileImage" />
+            </div>
+            <div class="row">
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <mat-icon fontSet="fa" fontIcon="fa-store" [inline]="true"></mat-icon>
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{'app.shops' | translate}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [vertical]="vertical" class="w-100">
+                            <mat-button-toggle value="profile">
+                                <div class="d-flex justify-content-between">
+                                    <span class="ml-3">{{'app.import' | translate}}</span>
+                                    <mat-icon fontSet="fa" fontIcon="fa-truck-loading" color="accent" [inline]="true">
+                                    </mat-icon>
+                                </div>
+                            </mat-button-toggle>
+                            <mat-button-toggle value="shop">
+                                <div class="d-flex justify-content-between">
+                                    <span class="ml-3">{{'app.sell' | translate}}</span>
+                                    <mat-icon fontSet="fa" fontIcon="fa-shopping-cart" color="accent" [inline]="true">
+                                    </mat-icon>
+                                </div>
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
     </mat-drawer>
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IResponse, IUserDTO } from 'src/app/interfaces/api.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,7 +15,11 @@ export class UserService {
       return this.http.get<{result: Boolean}>(`${this.endPoint}${this.version}authorize/check-existed`);
     }
 
-    registerUser() {
-      
+    registerUser(userDTO: IUserDTO) {
+      return this.http.post<IResponse>(`${this.endPoint}${this.version}authorize/create-user`, userDTO);
+    }
+
+    editUser(userDTO: IUserDTO) {
+      return this.http.put<IResponse>(`${this.endPoint}${this.version}authorize/edit-user`, userDTO);
     }
 }
