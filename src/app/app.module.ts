@@ -10,6 +10,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { SharedModule } from './shared/shared.module';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -22,14 +23,15 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        MatSidenavModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
         TranslateModule.forRoot({
-            defaultLanguage: 'en',
+            defaultLanguage: 'en-US',
             loader: {
                 provide: TranslateLoader,
                 useFactory: createTranslateLoader,
-                deps: [HttpClient],
+                deps: [HttpClient]
             }
         }),
         SharedModule

@@ -1,1 +1,25 @@
-<router-outlet></router-outlet>
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="over">Side menu</mat-drawer>
+    <mat-drawer-content>
+        <nav class="navbar fixed-top navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="row justify-content-between flex-nowrap">
+                    <div>
+                        <a class="navbar-brand" href="#">
+                            <img src="../favicon.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                            {{'app.title' | translate}}
+                        </a>
+                    </div>
+                    <div>
+                        menu
+                    </div>
+                    <div>
+                        account icon
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+

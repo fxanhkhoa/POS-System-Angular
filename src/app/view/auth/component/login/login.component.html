@@ -1,7 +1,9 @@
-<div class="container-fluid">
-    <div class="row align-items-center">
-        <mat-card>
+<div class="container-fluid h-100">
+    <div class="row align-items-center justify-content-center h-100">
+        <mat-card class="col-2">
             <mat-card-title>{{'login' | translate}}</mat-card-title>
+            <img mat-card-image (click)="login()" 
+                class="google-login ms-1" src="../../../../../assets/images/icons/btn_google_signin_dark_normal_web.png">
         </mat-card>
     </div>
 </div>

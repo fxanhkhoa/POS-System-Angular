@@ -103,9 +103,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "POS-SYSTEM-ANGULAR"
+  "defaultProject": "POS-SYSTEM-ANGULAR",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
