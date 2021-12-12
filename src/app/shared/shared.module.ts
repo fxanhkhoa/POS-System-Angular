@@ -22,13 +22,23 @@ import {
     MatPaginatorIntl,
     MatPaginatorModule
 } from '@angular/material/paginator';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ConfirmDialogComponent } from './component/confirm-dialog/confirm-dialog.component';
+import { ConfirmSnackbarComponent } from './component/confirm-snackbar/confirm-snackbar.component';
+import { ErrorSnackbarComponent } from './component/error-snackbar/error-snackbar.component';
+import { SuccessSnackbarComponent } from './component/success-snackbar/success-snackbar.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { SideMenuComponent } from './component/side-menu/side-menu.component';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MyCustomPaginatorIntl implements MatPaginatorIntl {
     constructor(private translate: TranslateService) {}
     changes = new Subject<void>();
@@ -55,7 +65,13 @@ export class MyCustomPaginatorIntl implements MatPaginatorIntl {
     }
 }
 @NgModule({
-    declarations: [],
+    declarations: [
+        ConfirmDialogComponent,
+        ConfirmSnackbarComponent,
+        ErrorSnackbarComponent,
+        SuccessSnackbarComponent,
+        SideMenuComponent
+    ],
     imports: [
         CommonModule,
         HttpClientModule,
@@ -81,7 +97,9 @@ export class MyCustomPaginatorIntl implements MatPaginatorIntl {
         MatSortModule,
         MatMomentDateModule,
         MatAutocompleteModule,
-        TranslateModule
+        TranslateModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        NgxSpinnerModule
     ],
     exports: [
         HttpClientModule,

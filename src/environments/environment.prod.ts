@@ -10,5 +10,6 @@ export const environment = {
         messagingSenderId: '79984626540',
         measurementId: 'G-JDV8STGRTG'
     },
+    endPoint: 'http://localhost:5000',
     production: true
 };

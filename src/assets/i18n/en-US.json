@@ -1,4 +1,7 @@
 {
     "login": "Login",
-    "app.title": "Point Of Sale"
+    "app.title": "Point Of Sale",
+    "go-home": "Go Home",
+
+    "about-us": "About Us"
 }

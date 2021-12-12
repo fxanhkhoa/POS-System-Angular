@@ -11,9 +11,10 @@ import {
 } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { UserFillInfoComponent } from './component/user-fill-info/user-fill-info.component';
 
 @NgModule({
-    declarations: [AuthComponent, LoginComponent],
+    declarations: [AuthComponent, LoginComponent, UserFillInfoComponent],
     imports: [
         CommonModule,
         AuthRoutingModule,

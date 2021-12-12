@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center mb-3">
+        <mat-icon fontSet="fa" fontIcon="fa-question-circle" class="icon"></mat-icon>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <h2>{{data.mainMsg}}</h2>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <span class="sub-text">{{data.subMsg}}</span>
+    </div>
+    <div class="row d-flex justify-content-end">
+        <button mat-raised-button color="primary" (click)="onCancel()">{{'cancel' | translate}}</button>
+        <button mat-stroked-button color="primary" (click)="onConfirm()">{{'confirm' | translate}}</button>
+    </div>
+</div>

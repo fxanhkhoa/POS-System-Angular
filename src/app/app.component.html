@@ -1,25 +1,39 @@
-<mat-drawer-container autosize>
-    <mat-drawer #drawer mode="over">Side menu</mat-drawer>
+<mat-drawer-container class="h-100" autosize>
+    <mat-drawer #drawer mode="side" (openedChange)="onOpenChange($event)">Side menu</mat-drawer>
     <mat-drawer-content>
-        <nav class="navbar fixed-top navbar-light bg-light">
+        <nav class="navbar navbar-expand-md sticky-top navbar-light bg-light">
             <div class="container-fluid">
-                <div class="row justify-content-between flex-nowrap">
-                    <div>
-                        <a class="navbar-brand" href="#">
-                            <img src="../favicon.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                            {{'app.title' | translate}}
-                        </a>
-                    </div>
-                    <div>
-                        menu
-                    </div>
-                    <div>
-                        account icon
-                    </div>
+                <div class="navbar-brand">
+                    <button mat-icon-button color="accent" (click)="drawer.toggle()">
+                        <mat-icon *ngIf="!isSideNavOpen">menu</mat-icon>
+                        <mat-icon *ngIf="isSideNavOpen">menu_open</mat-icon>
+                    </button>
+                    <a href="#">
+                        <img src="../favicon.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    </a>
+                    {{'app.title' | translate}}
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link clickable" [class.active]="currentPage === 'home'"
+                                (click)="navigate('home')">Home</a>
+                        </li>
+                        <li class="nav-item clickable">
+                            <a class="nav-link" [class.active]="currentPage === 'about'"
+                                (click)="navigate('about')">About</a>
+                        </li>
+                    </ul>
+                    <button mat-stroked-button color="primary" [routerLink]="['auth', 'login']">{{'login' |
+                        translate}}</button>
                 </div>
             </div>
         </nav>
         <router-outlet></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>
-
