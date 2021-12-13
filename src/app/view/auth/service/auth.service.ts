@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { CookieService } from 'ngx-cookie-service';
-import { firstValueFrom, map, Observable } from 'rxjs';
+import { resolve } from 'path/posix';
+import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
 import { AuthCookie } from 'src/app/shared/enum/cookie.enum';
 import {
     IProfile,
@@ -19,7 +20,8 @@ const endPoint = `${environment.endPoint}/users`;
 })
 export class AuthService {
     user: firebase.User | null = null;
-    userProfile: IProfile | null = null;
+    userProfile = new BehaviorSubject<IProfile | null>(null);
+    userProfile$ = this.userProfile.asObservable();
     roles: string[] = [];
     constructor(
         private http: HttpClient,
@@ -31,7 +33,7 @@ export class AuthService {
         const url = `${endPoint}/profile`;
         return this.http.get<IProfileResponse>(url).pipe(
             map((res) => {
-                this.userProfile = res as unknown as IProfile;
+                this.userProfile.next(res as unknown as IProfile);
                 this.roles = res.roles.split(' ');
                 return {
                     ...res,
@@ -55,21 +57,26 @@ export class AuthService {
                 'application/x-www-form-urlencoded'
             )
         };
-        try {
-            const result = await firstValueFrom(
-                this.http.post<IResponseTokenFromRefreshToken>(
-                    url,
-                    body.toString(),
-                    options
-                )
-            );
-            this.cookieService.set(AuthCookie.ID_TOKEN, result.id_token);
-            this.cookieService.set(
-                AuthCookie.REFRESH_TOKEN,
-                result.refresh_token
-            );
-        } catch (error) {
-            console.log(error);
-        }
+        const resultPromise = new Promise<boolean>(async (resolve, reject) => {
+            try {
+                const result = await firstValueFrom(
+                    this.http.post<IResponseTokenFromRefreshToken>(
+                        url,
+                        body.toString(),
+                        options
+                    )
+                );
+                this.cookieService.set(AuthCookie.ID_TOKEN, result.id_token);
+                this.cookieService.set(
+                    AuthCookie.REFRESH_TOKEN,
+                    result.refresh_token
+                );
+                resolve(true);
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
+        return resultPromise;
     }
 }

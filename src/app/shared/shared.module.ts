@@ -18,6 +18,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 import {
     MatPaginatorIntl,
     MatPaginatorModule
@@ -35,6 +36,10 @@ import { SuccessSnackbarComponent } from './component/success-snackbar/success-s
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { SideMenuComponent } from './component/side-menu/side-menu.component';
+import {
+    MultilevelMenuService,
+    NgMaterialMultilevelMenuModule
+} from 'ng-material-multilevel-menu';
 
 @Injectable({
     providedIn: 'root'
@@ -99,7 +104,9 @@ export class MyCustomPaginatorIntl implements MatPaginatorIntl {
         MatAutocompleteModule,
         TranslateModule,
         AngularFireModule.initializeApp(environment.firebase),
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        NgMaterialMultilevelMenuModule,
+        MatMenuModule
     ],
     exports: [
         HttpClientModule,
@@ -125,8 +132,12 @@ export class MyCustomPaginatorIntl implements MatPaginatorIntl {
         MatSortModule,
         MatMomentDateModule,
         TranslateModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        SideMenuComponent,
+        NgMaterialMultilevelMenuModule,
+        MatMenuModule
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [MultilevelMenuService]
 })
 export class SharedModule {}

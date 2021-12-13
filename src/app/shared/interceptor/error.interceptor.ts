@@ -20,6 +20,7 @@ import { IdTokenResult } from 'firebase/auth';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthCookie } from '../enum/cookie.enum';
 import { ToastService } from '../service/toast.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -27,7 +28,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         private authService: AuthService,
         private cookieService: CookieService,
         private http: HttpClient,
-        private toastService: ToastService
+        private toastService: ToastService,
+        private router: Router
     ) {}
 
     intercept(
@@ -41,21 +43,16 @@ export class ErrorInterceptor implements HttpInterceptor {
                     errorMessage = `${error.error.message}`;
                 } else {
                     if (error.status === 401) {
-                        if (this.authService.user) {
+                        if (this.cookieService.get(AuthCookie.REFRESH_TOKEN)) {
                             return from(
-                                this.authService.user?.getIdTokenResult(
-                                    true
-                                ) as Promise<IdTokenResult>
+                                this.authService.setUserAndLogin()
                             ).pipe(
-                                switchMap((res: IdTokenResult) => {
-                                    this.cookieService.set(
-                                        AuthCookie.ID_TOKEN,
-                                        res.token
-                                    );
+                                switchMap((res: boolean) => {
                                     return this.http.request(request);
-                                    // return new Observable<any>();
                                 })
                             );
+                        } else {
+                            this.router.navigate(['auth', 'login']);
                         }
                     } else {
                         this.toastService.showError(

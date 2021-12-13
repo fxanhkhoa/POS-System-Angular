@@ -25,6 +25,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "firebase": "^9.6.0",
+    "ng-material-multilevel-menu": "^5.5.3",
     "ngx-cookie-service": "^13.1.0-rc.1",
     "ngx-spinner": "^13.0.0",
     "rxfire": "^6.0.3",

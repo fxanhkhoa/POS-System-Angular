@@ -1,7 +1,16 @@
 {
     "login": "Đăng Nhập",
+    "please-login": "Vui Lòng Đăng Nhập",
+    "need-login-to-use-feature": "Bạn cần đăng nhập để sử dụng chức năng này",
     "app.title": "Điểm Bán Hàng",
     "go-home": "Về trang chủ",
 
-    "about-us": "Về Chúng Tôi"
+    "about-us": "Về Chúng Tôi",
+
+    "my-shop": "Cửa Hàng Của Tôi",
+    "not-login": "Chưa đăng nhập",
+    "shop": "Cửa Hàng",
+    "product": "Sản Phẩm",
+    "invoice": "Hoá Đơn",
+    "log-out": "Đăng Xuất"
 }

@@ -6,11 +6,9 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
     templateUrl: './error-snackbar.component.html',
     styleUrls: ['./error-snackbar.component.scss']
 })
-export class ErrorSnackbarComponent implements OnInit {
+export class ErrorSnackbarComponent {
     constructor(
         @Inject(MAT_SNACK_BAR_DATA)
         public data: { mainMsg: string; subMsg: string }
     ) {}
-
-    ngOnInit(): void {}
 }

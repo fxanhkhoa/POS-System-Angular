@@ -1,7 +1,16 @@
 {
     "login": "Login",
+    "please-login": "Please Login",
+    "need-login-to-use-feature": "You need to login to use this feature",
     "app.title": "Point Of Sale",
     "go-home": "Go Home",
 
-    "about-us": "About Us"
+    "about-us": "About Us",
+
+    "my-shop": "My Shop",
+    "not-login": "Not Login",
+    "shop": "Shop",
+    "product": "Product",
+    "invoice": "Invoice",
+    "log-out": "Log Out"
 }

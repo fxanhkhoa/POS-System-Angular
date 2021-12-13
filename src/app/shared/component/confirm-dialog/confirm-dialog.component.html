@@ -1,14 +1,14 @@
 <div class="container-fluid p-3">
-    <div class="row d-flex justify-content-center mb-3">
-        <mat-icon fontSet="fa" fontIcon="fa-question-circle" class="icon"></mat-icon>
+    <div class="d-flex justify-content-center mb-2">
+        <mat-icon class="icon">help_outline</mat-icon>
     </div>
-    <div class="row d-flex justify-content-center px-2">
+    <div class="d-flex justify-content-center px-2">
         <h2 class="text-center" [innerHTML]="data.mainMsg">{{data.mainMsg}}</h2>
     </div>
-    <div class="row d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
         <span class="sub-text text-center" [innerHTML]="data.subMsg"></span>
     </div>
-    <div class="row d-flex justify-content-end px-2 pt-2">
+    <div class="d-flex justify-content-end px-2 pt-2">
         <button mat-stroked-button color="accent" class="mr-2" (click)="onCancel()">{{'cancel' | translate}}</button>
         <button mat-raised-button color="warn" (click)="onConfirm()">{{'confirm' | translate}}</button>
     </div>

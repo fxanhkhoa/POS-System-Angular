@@ -15,11 +15,12 @@ export class AppInitService {
 
     async Init() {
         return new Promise<void>(async (resolve, reject) => {
+            if (!this.cookieService.get(AuthCookie.REFRESH_TOKEN)) {
+                resolve();
+                return;
+            }
             try {
-                const profile = await firstValueFrom(
-                    this.authService.getProfile()
-                );
-                console.log(profile);
+                await firstValueFrom(this.authService.getProfile());
             } catch (error) {
                 await this.authService.setUserAndLogin();
                 await this.authService.getProfile();

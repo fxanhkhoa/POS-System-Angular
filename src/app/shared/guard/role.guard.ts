@@ -6,9 +6,13 @@ import {
     RouterStateSnapshot,
     UrlTree
 } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/view/auth/service/auth.service';
+import { AuthCookie } from '../enum/cookie.enum';
+import { ToastService } from '../service/toast.service';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +21,10 @@ export class RoleGuard implements CanActivate {
     constructor(
         private authService: AuthService,
         private router: Router,
-        private spinner: NgxSpinnerService
+        private spinner: NgxSpinnerService,
+        private toastService: ToastService,
+        private translate: TranslateService,
+        private cookieService: CookieService
     ) {}
 
     canActivate(
@@ -29,11 +36,24 @@ export class RoleGuard implements CanActivate {
         | boolean
         | UrlTree {
         const roles = this.authService.roles;
+        if (!this.cookieService.get(AuthCookie.REFRESH_TOKEN)) {
+            this.toastService.showError(
+                this.translate.instant('please-login'),
+                this.translate.instant('need-login-to-use-feature'),
+                1500
+            );
+            this.router.navigate(['auth', 'login']);
+            return false;
+        }
+        if (roles.length === 0) {
+            this.router.navigate(['auth', 'signup']);
+            return false;
+        }
 
         if (!route.data.roles) {
             return true;
         }
-        console.log(roles, this.checkRoles(route.data.roles, roles));
+
         if (roles.length > 0 && !this.checkRoles(route.data.roles, roles)) {
             this.router.navigate(['information', 'forbidden']);
             return false;

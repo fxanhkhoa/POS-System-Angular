@@ -1,17 +1,19 @@
 <mat-drawer-container class="h-100" autosize>
-    <mat-drawer #drawer mode="side" (openedChange)="onOpenChange($event)">Side menu</mat-drawer>
+    <mat-drawer #drawer mode="side" (openedChange)="onOpenChange($event)">
+        <app-side-menu></app-side-menu>
+    </mat-drawer>
     <mat-drawer-content>
         <nav class="navbar navbar-expand-md sticky-top navbar-light bg-light">
-            <div class="container-fluid">
-                <div class="navbar-brand">
+            <div class="container-fluid d-flex">
+                <div class="navbar-brand my-auto">
                     <button mat-icon-button color="accent" (click)="drawer.toggle()">
-                        <mat-icon *ngIf="!isSideNavOpen">menu</mat-icon>
-                        <mat-icon *ngIf="isSideNavOpen">menu_open</mat-icon>
+                        <mat-icon *ngIf="!isSideNavOpen" class="fade">menu</mat-icon>
+                        <mat-icon *ngIf="isSideNavOpen" class="fade">menu_open</mat-icon>
                     </button>
-                    <a href="#">
+                    <a href="#" class="my-auto">
                         <img src="../favicon.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
                     </a>
-                    {{'app.title' | translate}}
+                    <span class="ms-1 my-auto">{{'app.title' | translate}}</span>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -29,8 +31,15 @@
                                 (click)="navigate('about')">About</a>
                         </li>
                     </ul>
-                    <button mat-stroked-button color="primary" [routerLink]="['auth', 'login']">{{'login' |
+                    <button mat-stroked-button color="primary" [routerLink]="['auth', 'login']" *ngIf="roles.length === 0">{{'login' |
                         translate}}</button>
+                    <img *ngIf="roles.length > 0" [src]="(profile | async)?.picture" class="avatar clickable" [matMenuTriggerFor]="menu">
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="logOut()">
+                          <mat-icon>logout</mat-icon>
+                          <span>{{'log-out' | translate}}</span>
+                        </button>
+                    </mat-menu>
                 </div>
             </div>
         </nav>

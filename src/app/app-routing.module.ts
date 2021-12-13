@@ -33,12 +33,24 @@ const routes: Routes = [
     {
         path: 'product',
         loadChildren: () =>
-            import('./view/product/product.module').then((m) => m.ProductModule)
+            import('./view/product/product.module').then(
+                (m) => m.ProductModule
+            ),
+        canActivate: [RoleGuard],
+        data: {
+            roles: [Role.ADMIN]
+        }
     },
     {
         path: 'invoice',
         loadChildren: () =>
-            import('./view/invoice/invoice.module').then((m) => m.InvoiceModule)
+            import('./view/invoice/invoice.module').then(
+                (m) => m.InvoiceModule
+            ),
+        canActivate: [RoleGuard],
+        data: {
+            roles: [Role.ADMIN]
+        }
     },
     {
         path: '**',

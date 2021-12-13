@@ -9,14 +9,12 @@ import {
     templateUrl: './confirm-snackbar.component.html',
     styleUrls: ['./confirm-snackbar.component.scss']
 })
-export class ConfirmSnackbarComponent implements OnInit {
+export class ConfirmSnackbarComponent {
     constructor(
         public snackBarRef: MatSnackBarRef<ConfirmSnackbarComponent>,
         @Inject(MAT_SNACK_BAR_DATA)
         public data: { mainMsg: string; subMsg: string }
     ) {}
-
-    ngOnInit(): void {}
 
     onCancel() {
         this.snackBarRef.dismiss();

@@ -9,6 +9,8 @@ export interface IProfile {
     address: string;
     shops: string[];
     roles: string;
+    picture: string;
+    googleName: string;
 }
 
 export interface IProfileResponse extends Omit<IProfile, 'shops'> {
